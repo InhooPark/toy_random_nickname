@@ -90,12 +90,20 @@ function App() {
   }
   function copyNick() {
     window.navigator.clipboard.writeText(myName);
-    alert("복사되었습니다!");
+    const message = document.querySelector("span");
+    message.style.opacity = 1;
+    setTimeout(() => {
+      message.style.opacity = 0;
+    }, 600);
   }
   return (
     <div className="App">
       <Layout>
         <main>
+          <span style={{ opacity: 0, transition: "300ms" }}>
+            클립보드에 복사되었습니다. <br /> <br />
+            <br />
+          </span>
           <p id="mynick">{myName}</p>
 
           <button onClick={createNick}> Create New Nickname </button>
